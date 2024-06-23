@@ -1,7 +1,7 @@
 import os
 import sys
 # creation2.py
-def creation2(name):
+def creation2(name,numInstances):
     print("I am here!")
     currDir = os.getcwd()
     os.chdir(name)
@@ -11,7 +11,7 @@ def creation2(name):
     homeDir = os.path.expanduser('~')
     
 
-    for i in range(525):
+    for i in range(numInstances):
         file = open("run"+str(i)+".sh","w")
         bigString='''#!/bin/bash
 
@@ -49,19 +49,20 @@ python3 allImages2set.py '''+ str(i) + ''' ''' + name + '''
 cd ''' + name + '''bootstrap2/
 cd run''' + str(i) +'''/
 git clone git@github.com:pallavid30/yolov52.git
-cp '''+ currDir + '''data.yaml yolov5/data/
-cp '''+ currDir + '''dataloaders.py yolov5/utils/
+cp '''+ currDir + '''/data.yaml yolov52/data/
+cp '''+ currDir + '''/dataloaders.py yolov52/utils/
 
 
-cd ''' + name + '''bootstrap2/run'''+ str(i) + '''/yolov5/
+cd ''' + name + '''bootstrap2/run'''+ str(i) + '''/yolov52/
 cp /source/path/to/best.pt .
-python3 train.py --hyp 'hyp.VOC.yaml' --img 640 --batch 16 --epochs 2500 --data data.yaml --weights  /work/smryan-scratch/fine_tuning_backbone_10_layers/best.pt --cache --freeze 10
+python3 train.py --img 640 --batch 16 --epochs 2500 --data data.yaml --weights yolov5s.pt --cache
 python3 val.py --data data.yaml --weights runs/train/exp/weights/best.pt --img 640 --task test
 '''
         file.write(bigString)
         file.close()
 
 if __name__ == "__main__":
-    pathName = int(sys.argv[1])
+    numInstances = int(sys.argv[2])
+    pathName = (sys.argv[1])
     print("I am the great hero of all time and space!!!")
-    creation2(pathName)
+    creation2(pathName,numInstances)

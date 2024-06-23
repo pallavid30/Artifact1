@@ -10,11 +10,12 @@ def listdir_nohidden(path):
                 yield f
 
 def createBootstrapInstances(index,j,name):
+    OriginalOrRelabeled = "original"
     rootFol = name + "bootstrap2/run" + str(index) +"/"
     selectedSet = set() 
 
-    globalImages = "./AllLabelsFolders/"+str(j)+"/"
-    globalLabels = "./AllLabelsFolders/labels/"
+    globalImages = "./"+OriginalOrRelabeled+"/AllLabelsFolders/"+str(j)+"/"
+    globalLabels = "./"+OriginalOrRelabeled+"/AllLabelsFolders/labels/"
     sinkFolImages = rootFol + "set1/images/train/"
     sinkFolLabels = rootFol + "set1/labels/train/"
     # get a list of files inside  allImages/images/, alist,

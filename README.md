@@ -1,8 +1,8 @@
-# Paper title
+# Deep Learning-Powered Visual Inspection for Metal Surfaces – Impact of Annotations on Algorithms based on Defect Characteristics
 
 # Abstract
 
-- Must contain the link to the paper and other things.
+In general, the labeling process provides a set of annotations that are used for supervised learning. A major assumption of this process is that each annotation represents the ground truth about an observed phenomenon, which is defined by manually labeling it. While most extant Deep Learning (DL) research is focused on improving the accuracy and efficiency of training and inferencing algorithms, only limited attention has been paid to data validation. Potential inconsistencies in the labeling process for DL are in this less investigated category. This study assessed the performance of You Only Look Once version 5 small (YOLOv5s) using confidence intervals (CIs) for each defect type in a metal defect benchmark dataset, GC10 DET. The impacts of standardizing the labeling process and the role of consistency in labeling were evaluated through an experimental study. The results showed that individually labeled small-size defects with precise bounding boxes perform better than defects labeled inconsistently in a group. Improved data validation through precise labeling increased average precision (AP) by 12–26% across defect categories. This overall result points to the need for further evaluation of an image dataset through data validation before comparing algorithms on a benchmark dataset and using bootstrap CIs when categories have limited data. 
 
 # Getting started
 
@@ -46,9 +46,8 @@ python3 creation2.py "/path/to/where/you/want/the/jobs/" numberOfBootstrapInstan
 # where AllLabelsFolder/1/ contains all the images, and AllLabelsFolder/labels/ contains the labels
 # Find the example in our repo.
 
-
-
-
-
-
 ```
+
+# Notes
+1. This work uses [Yolov5](https://github.com/ultralytics/yolov5) at a particular commit, which we pull from a separate repository, as [yolov52](https://github.com/pallavid30/yolov52).
+2. This work uses the [GC10DET data set](https://www.kaggle.com/datasets/alex000kim/gc10det)
